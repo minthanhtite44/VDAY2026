@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wait... Do You? ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
+
+        :root {
+            --rose-primary: #e11d48;
+            --rose-light: #fff1f2;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #ffffff 0%, #ffe4e6 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        .fancy-font { font-family: 'Dancing Script', cursive; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 2rem;
+        }
+
+        .falling-heart {
+            position: fixed;
+            top: -10%;
+            pointer-events: none;
+            z-index: 1;
+            animation: fallDown linear forwards;
+            filter: drop-shadow(0 0 5px rgba(225, 29, 72, 0.2));
+        }
+
+        @keyframes fallDown {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        #no-btn {
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        #yes-btn {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+        }
+
+        .polaroid {
+            background: white;
+            padding: 12px 12px 24px 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            box-shadow: 0 20px 30px -10px rgba(225, 29, 72, 0.3);
+            z-index: 30;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800">
+
+    <div id="success-screen" class="hidden flex-col items-center py-20 px-4 animate-in fade-in duration-1000">
+        <div class="text-center mb-12">
+            <h1 class="text-6xl md:text-8xl fancy-font text-rose-600 mb-4 drop-shadow-sm">Happy My Valentine My Baby!</h1>
+            <p class="text-gray-500 italic text-lg">Every moment with you is a favorite memory, and I hope we never stop adding to the collection. You make even the simplest days feel special just by being in them. I am so lucky to have you by my side, and I can't wait for a lifetime of more 'favorites' with you.</p>
+        </div>
+
+        <div class="w-full max-w-3xl aspect-video rounded-3xl overflow-hidden shadow-2xl border-8 border-white mb-20">
+            <iframe width="100%" height="100%" 
+                src="Short2.MOV" 
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full mb-20">
+            <div class="polaroid -rotate-3">
+                <img src="Photo1.jpg" class="w-full aspect-square object-cover rounded-sm mb-4">
+                <p class="fancy-font text-2xl text-center text-rose-500">Our First Trip Memory</p>
+            </div>
+            <div class="polaroid rotate-2">
+                <img src="Photo7.jpg" class="w-full aspect-square object-cover rounded-sm mb-4">
+                <p class="fancy-font text-2xl text-center text-rose-500">Baby's Birthday Memory</p>
+            </div>
+            <div class="polaroid -rotate-1">
+                <img src="Photo8.jpg" class="w-full aspect-square object-cover rounded-sm mb-4">
+                <p class="fancy-font text-2xl text-center text-rose-500">Baby's Birthday Memory</p>
+            </div>
+        </div>
+
+        <div class="w-full max-w-3xl aspect-video rounded-3xl overflow-hidden shadow-2xl border-8 border-white mb-20">
+            <iframe width="100%" height="100%" 
+                src="Short3.MOV" 
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full mb-20">
+            <div class="polaroid -rotate-3">
+                <img src="Photo2.jpg" class="w-full aspect-square object-cover rounded-sm mb-4">
+                <p class="fancy-font text-2xl text-center text-rose-500">Internship but Great Memory</p>
+            </div>
+            <div class="polaroid rotate-2">
+                <img src="Photo3.jpg" class="w-full aspect-square object-cover rounded-sm mb-4">
+                <p class="fancy-font text-2xl text-center text-rose-500">Gallery Date </p>
+            </div>
+            <div class="polaroid -rotate-1">
+                <img src="Photo10.jpg" class="w-full aspect-square object-cover rounded-sm mb-4">
+                <p class="fancy-font text-2xl text-center text-rose-500">Anni date and Baby is so cute in this photo</p>
+            </div>
+        </div>
+
+        <div class="w-full max-w-3xl aspect-video rounded-3xl overflow-hidden shadow-2xl border-8 border-white mb-20">
+            <iframe width="100%" height="100%" 
+                src="Short1.MOV" 
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full mb-20">
+            <div class="polaroid -rotate-3">
+                <img src="Photo4.jpg" class="w-full aspect-square object-cover rounded-sm mb-4">
+                <p class="fancy-font text-2xl text-center text-rose-500">Study Date and full of Memory</p>
+            </div>
+            <div class="polaroid rotate-2">
+                <img src="Photo5.jpg" class="w-full aspect-square object-cover rounded-sm mb-4">
+                <p class="fancy-font text-2xl text-center text-rose-500">Study Date and full of Memory</p>
+            </div>
+            <div class="polaroid -rotate-1">
+                <img src="Photo6.jpg" class="w-full aspect-square object-cover rounded-sm mb-4">
+                <p class="fancy-font text-2xl text-center text-rose-500">Study Date and full of Memory</p>
+            </div>
+        </div>
+
+        <button onclick="location.reload()" class="mt-20 px-8 py-3 rounded-full border-2 border-rose-200 text-rose-400 hover:bg-rose-50 transition-all">
+            Restart the Magic
+        </button>
+    </div>
+
+    <main id="main-content" class="flex flex-col items-center justify-center min-h-screen p-6 relative">
+        <div class="glass-card p-12 md:p-20 flex flex-col items-center text-center shadow-2xl max-w-2xl w-full z-10">
+            <div id="emoji-display" class="text-8xl mb-6 transition-transform hover:scale-110 duration-300">🥺</div>
+            
+            <h2 class="text-3xl font-light text-slate-600 mb-2">I have a question...</h2>
+            <h1 id="question-text" class="text-5xl md:text-7xl font-extrabold text-slate-800 mb-12">
+                Will you be my <span class="text-rose-500 fancy-font block md:inline">Valentine?</span>
+            </h1>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 min-h-[100px]">
+                <button id="yes-btn" class="px-12 py-4 bg-rose-500 text-white rounded-full text-2xl font-bold shadow-xl hover:shadow-rose-200 active:scale-95">
+                    YES!
+                </button>
+                
+                <button id="no-btn" class="px-8 py-3 bg-white text-slate-400 rounded-xl text-lg font-medium border border-slate-100 shadow-sm">
+                    No
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        const mainContent = document.getElementById('main-content');
+        const successScreen = document.getElementById('success-screen');
+        const questionText = document.getElementById('question-text');
+        const emojiDisplay = document.getElementById('emoji-display');
+
+        let clickCount = 0;
+        const messages = [
+            "Are you sure? ☹️",
+            "Pleease reconsider! 😭",
+            "But we're so cute! 💔",
+            "Don't do this to me... 🥀",
+            "I'm gonna cry! 🚑",
+            "Look at the Yes button... it's huge! ❤️",
+            "Just click it, baby! 🥺"
+        ];
+
+        const emojis = ["🥺", "😭", "😰", "💔", "🥀", "🧤", "🧸"];
+
+        function spawnHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'falling-heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            const duration = (Math.random() * 3 + 4);
+            heart.style.animationDuration = duration + 's';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), duration * 1000);
+        }
+        setInterval(spawnHeart, 400);
+
+        noBtn.addEventListener('mouseover', () => {
+            if (clickCount > 0) {
+                const x = (Math.random() - 0.5) * 400;
+                const y = (Math.random() - 0.5) * 400;
+                noBtn.style.transform = `translate(${x}px, ${y}px)`;
+            }
+        });
+
+        noBtn.addEventListener('click', () => {
+            clickCount++;
+            
+            if (clickCount <= messages.length) {
+                questionText.innerHTML = `<span class="text-rose-500 transition-all">${messages[clickCount-1]}</span>`;
+                emojiDisplay.innerText = emojis[clickCount % emojis.length];
+            }
+
+            const yesScale = 1 + (clickCount * 0.35);
+            const noScale = Math.max(0.5, 1 - (clickCount * 0.1));
+            
+            yesBtn.style.transform = `scale(${yesScale})`;
+            noBtn.style.transform = `scale(${noScale})`;
+            
+            const x = (Math.random() - 0.5) * 300;
+            const y = (Math.random() - 0.5) * 300;
+            noBtn.style.translate = `${x}px ${y}px`;
+        });
+
+        yesBtn.addEventListener('click', () => {
+            const count = 200;
+            const defaults = { origin: { y: 0.7 }, colors: ['#e11d48', '#fb7185', '#ffffff'] };
+
+            function fire(particleRatio, opts) {
+                confetti({ ...defaults, ...opts, particleCount: Math.floor(count * particleRatio) });
+            }
+
+            fire(0.25, { spread: 26, startVelocity: 55 });
+            fire(0.2, { spread: 60 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+
+            mainContent.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+            setTimeout(() => {
+                mainContent.style.display = 'none';
+                successScreen.classList.remove('hidden');
+                successScreen.classList.add('flex');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 500);
+        });
+    </script>
+</body>
+</html>

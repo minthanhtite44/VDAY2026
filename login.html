@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Your Surprise ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
+
+        body {
+            background: radial-gradient(circle at center, #ffffff 0%, #ffe4e6 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .fancy-font { font-family: 'Dancing Script', cursive; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 2rem;
+        }
+
+        .falling-heart {
+            position: fixed;
+            top: -10%;
+            pointer-events: none;
+            z-index: 1;
+            animation: fallDown linear forwards;
+            filter: drop-shadow(0 0 5px rgba(225, 29, 72, 0.2));
+        }
+
+        @keyframes fallDown {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        .keypad-btn {
+            transition: all 0.2s ease;
+            background: white;
+            border: 1px solid rgba(225, 29, 72, 0.1);
+        }
+
+        .keypad-btn:hover {
+            background: #fff1f2;
+            transform: scale(1.05);
+            color: #e11d48;
+        }
+
+        .keypad-btn:active {
+            transform: scale(0.95);
+        }
+
+        #display-area {
+            letter-spacing: 0.25em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Error Shake */
+        .shake {
+            animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <main class="glass-card p-8 md:p-12 shadow-2xl max-w-sm w-full z-10 text-center">
+        <div class="text-5xl mb-4">🔒</div>
+        <h2 class="text-2xl font-bold text-slate-800 mb-1">Private Access</h2>
+        <p class="text-slate-500 mb-8 text-sm">Entenr Password To Answer The Question </p>
+
+        <div id="display-area" class="w-full h-16 bg-white/50 rounded-2xl border-2 border-rose-100 mb-6 flex items-center justify-center text-3xl font-bold text-rose-600">
+            </div>
+
+        <div class="grid grid-cols-3 gap-3 mb-6">
+            <button class="keypad-btn h-14 rounded-xl text-xl font-bold text-slate-700" onclick="press('1')">1</button>
+            <button class="keypad-btn h-14 rounded-xl text-xl font-bold text-slate-700" onclick="press('2')">2</button>
+            <button class="keypad-btn h-14 rounded-xl text-xl font-bold text-slate-700" onclick="press('3')">3</button>
+            <button class="keypad-btn h-14 rounded-xl text-xl font-bold text-slate-700" onclick="press('4')">4</button>
+            <button class="keypad-btn h-14 rounded-xl text-xl font-bold text-slate-700" onclick="press('5')">5</button>
+            <button class="keypad-btn h-14 rounded-xl text-xl font-bold text-slate-700" onclick="press('6')">6</button>
+            <button class="keypad-btn h-14 rounded-xl text-xl font-bold text-slate-700" onclick="press('7')">7</button>
+            <button class="keypad-btn h-14 rounded-xl text-xl font-bold text-slate-700" onclick="press('8')">8</button>
+            <button class="keypad-btn h-14 rounded-xl text-xl font-bold text-slate-700" onclick="press('9')">9</button>
+            <button class="keypad-btn h-14 rounded-xl text-sm font-bold text-rose-400" onclick="clearInp()">CLR</button>
+            <button class="keypad-btn h-14 rounded-xl text-xl font-bold text-slate-700" onclick="press('0')">0</button>
+            <button class="keypad-btn h-14 rounded-xl text-sm font-bold text-rose-400" onclick="backspace()">⌫</button>
+        </div>
+
+        <button onclick="verify()" class="w-full py-4 bg-rose-500 text-white rounded-2xl text-lg font-bold shadow-lg shadow-rose-200 hover:bg-rose-600 active:scale-95 transition-all">
+            Unlock Magic ✨
+        </button>
+
+        <p id="msg" class="mt-4 text-sm font-medium min-h-[20px]"></p>
+    </main>
+
+    <script>
+        const PIN = "1932024";
+        let currentInput = "";
+        const display = document.getElementById('display-area');
+        const msg = document.getElementById('msg');
+        const card = document.querySelector('.glass-card');
+
+        function press(num) {
+            if (currentInput.length < 8) {
+                currentInput += num;
+                msg.innerText = "";
+                updateDisplay();
+            }
+        }
+
+        function clearInp() {
+            currentInput = "";
+            updateDisplay();
+        }
+
+        function backspace() {
+            currentInput = currentInput.slice(0, -1);
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            display.innerText = currentInput;
+        }
+
+        function verify() {
+            if (currentInput === PIN) {
+                msg.className = "mt-4 text-sm font-medium text-green-500";
+                msg.innerText = "Opening your heart... ❤️";
+                setTimeout(() => {
+                    window.location.href = "vday.html";
+                }, 500);
+            } else {
+                card.classList.add('shake');
+                msg.className = "mt-4 text-sm font-medium text-rose-500";
+                msg.innerText = "Incorrect date, try again KoKo! 🥺";
+                currentInput = "";
+                updateDisplay();
+                setTimeout(() => card.classList.remove('shake'), 400);
+            }
+        }
+
+        // Falling Hearts Background Logic
+        function spawnHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'falling-heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            const duration = (Math.random() * 3 + 4);
+            heart.style.animationDuration = duration + 's';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), duration * 1000);
+        }
+        setInterval(spawnHeart, 400);
+    </script>
+</body>
+</html>
